@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SpendTracker.Domain.Users;
+using SpendTracker.Domain.Spends;
+
 
 namespace SpendTracker.Infrastructure.Persistence
 {
-    public class UserContext:DbContext
+    public class SpendContext:DbContext
     {
-        public UserContext(DbContextOptions<UserContext> options):
-            base(options)
+        public SpendContext(DbContextOptions<SpendContext> options) :
+          base(options)
         { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -15,7 +16,7 @@ namespace SpendTracker.Infrastructure.Persistence
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
         }
 
-        public DbSet<User> Users => Set<User>();
+        public DbSet<Spend> Spends => Set<Spend>();
 
     }
 }

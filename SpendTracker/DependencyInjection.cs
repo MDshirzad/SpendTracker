@@ -6,6 +6,7 @@ using SpendTracker.Application.Users;
 using SpendTracker.Domain.Users;
 using SpendTracker.Infrastructure.Persistence;
 using SpendTracker.Infrastructure.Persistence.Repositories;
+using static CSharpFunctionalExtensions.Result;
 
 namespace SpendTracker
 {
@@ -26,6 +27,22 @@ namespace SpendTracker
                     options.UseSqlServer(configuration.GetConnectionString("SpendTracker"));
                 
             });
+
+            services.AddDbContext<JourneyContext>(options =>
+            {
+
+                options.UseSqlServer(configuration.GetConnectionString("SpendTracker"));
+
+            });
+
+            services.AddDbContext<JourneySpendsContext>(options =>
+            {
+
+                options.UseSqlServer(configuration.GetConnectionString("SpendTracker"));
+
+            });
+
+ 
         }
 
 

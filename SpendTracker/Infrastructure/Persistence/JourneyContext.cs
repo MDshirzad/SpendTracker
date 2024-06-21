@@ -1,21 +1,25 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SpendTracker.Domain.Journies;
 using SpendTracker.Domain.Users;
 
 namespace SpendTracker.Infrastructure.Persistence
 {
-    public class UserContext:DbContext
+    public class JourneyContext:DbContext
     {
-        public UserContext(DbContextOptions<UserContext> options):
-            base(options)
+
+
+        public JourneyContext(DbContextOptions<JourneyContext> options) :
+           base(options)
         { }
+
+        public DbSet<Journey> Journeys => Set<Journey>();
+        public DbSet<JourneySpends> JourneySpends => Set<JourneySpends>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
         }
 
-        public DbSet<User> Users => Set<User>();
 
     }
 }
